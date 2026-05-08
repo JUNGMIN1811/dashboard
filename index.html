@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사내 성과 대시보드</title>
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body>
+  <!-- 오프라인 폴백 배너: isOffline 시만 표시 -->
+  <div id="offline-banner" class="offline-banner" style="display:none;">
+    ⚠️ 오프라인 모드 — 샘플 데이터 표시 중
+  </div>
+
+  <header class="header">
+    <h1>사내 성과 대시보드</h1>
+  </header>
+
+  <div class="layout">
+    <!-- 좌측 사이드바: 필터 + 범례 -->
+    <aside class="sidebar">
+      <section class="sidebar-section">
+        <h2 class="sidebar-title">기간 선택</h2>
+        <div class="filter-radio-group">
+          <label class="filter-radio">
+            <input type="radio" name="range" value="7" data-range="7" />
+            7일
+          </label>
+          <label class="filter-radio">
+            <input type="radio" name="range" value="30" data-range="30" checked />
+            30일
+          </label>
+          <label class="filter-radio">
+            <input type="radio" name="range" value="90" data-range="90" />
+            90일
+          </label>
+          <label class="filter-radio">
+            <input type="radio" name="range" value="custom" data-range="custom" />
+            커스텀
+          </label>
+        </div>
+      </section>
+
+      <!-- 커스텀 날짜 피커: 커스텀 선택 시 표시 -->
+      <section class="sidebar-section custom-date-section" id="custom-date-section" style="display:none;">
+        <h2 class="sidebar-title">날짜 범위</h2>
+        <div class="date-picker-group">
+          <label class="date-label">
+            시작일
+            <input type="date" id="date-start" class="date-input" />
+          </label>
+          <label class="date-label">
+            종료일
+            <input type="date" id="date-end" class="date-input" />
+          </label>
+          <button id="apply-custom" class="apply-btn" disabled>적용</button>
+        </div>
+      </section>
+
+      <section class="sidebar-section">
+        <h2 class="sidebar-title">범례</h2>
+        <div class="legend">
+          <span class="legend-dot" style="background:#4A90D9;"></span>
+          <span class="legend-label">매출</span>
+        </div>
+      </section>
+    </aside>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+      <!-- KPI 카드 4개 -->
+      <div class="kpi-grid">
+        <div class="kpi-card" style="--accent:#4A90D9;">
+          <div class="kpi-label">매출</div>
+          <div class="kpi-value" id="kpi-revenue">—</div>
+          <div class="kpi-unit">원</div>
+        </div>
+        <div class="kpi-card" style="--accent:#50C878;">
+          <div class="kpi-label">방문자</div>
+          <div class="kpi-value" id="kpi-visitors">—</div>
+          <div class="kpi-unit">명</div>
+        </div>
+        <div class="kpi-card" style="--accent:#F5A623;">
+          <div class="kpi-label">전환율</div>
+          <div class="kpi-value" id="kpi-conversion">—</div>
+          <div class="kpi-unit">%</div>
+        </div>
+        <div class="kpi-card" style="--accent:#9B59B6;">
+          <div class="kpi-label">신규고객</div>
+          <div class="kpi-value" id="kpi-new-customers">—</div>
+          <div class="kpi-unit">명</div>
+        </div>
+      </div>
+
+      <!-- 매출 추이 차트 -->
+      <div class="chart-card">
+        <h2 class="chart-title">매출 추이</h2>
+        <div class="chart-wrapper">
+          <canvas id="revenue-chart"></canvas>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/scripts/app.js"></script>
+</body>
+</html>
