@@ -71,3 +71,6 @@ temp/
 
 # bkit 내부 도구
 .bkit/
+
+# 브레인스토밍 시각적 동반자
+.superpowers/
