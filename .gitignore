@@ -68,3 +68,6 @@ desktop.ini
 # 임시 파일
 tmp/
 temp/
+
+# bkit 내부 도구
+.bkit/
